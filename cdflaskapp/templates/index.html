@@ -1,10 +1,10 @@
-<!-- This pulls in the base html file we will create in a moment -->
 {% extends "base.html" %}
-<!-- This sets to title variable in the base.html file -->
-{% block title %}Home{% endblock %}
-<!-- Everything within this block body will have the base.html applied around it -->
-{% block body %}
-    <h1>Welcome to {{ sitename }}!</h1>
-    <p>This is a test Flask app. Be sure to check out the <a href="https://credibledev.com">credibleDEV blog</a>.</p>
+
+{% block content %}
+<h1 class="title">
+  Flask Login Example
+</h1>
+<h2 class="subtitle">
+  Easy authentication and authorization in Flask.
+</h2>
 {% endblock %}
-<!-- End the block body tag -->

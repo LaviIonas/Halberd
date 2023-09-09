@@ -9,6 +9,7 @@
 <div class="events">
   {% for event in events %}
     <h1> {{ event.event_name }} </h1>
+    <button  method="POST" action="/delete_event" class="button">delete</button>
   {% endfor %}
 </div>
 

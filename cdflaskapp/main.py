@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 from flask_login import login_required, current_user
 from .models import User, Event
 from . import db
@@ -31,4 +31,13 @@ def add_event():
     db.session.add(new_event)
     db.session.commit()
 
+    return redirect('/profile')
+
+@main.route('/delete_event/<event_id>', methods=['POST'])
+@login_required
+def delete_event(event_id):
+    event = Event.query.get(event_id=event_id)
+
+    db.session.delete(event)
+    db.session.commit()
     return redirect('/profile')

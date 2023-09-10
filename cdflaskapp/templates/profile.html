@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<script src="../static/javascript/taskdrag.js"></script>
+
 <div class="welcome-container">
   <h1 class="user-welcome">
     Welcome, {{ user_name }}!
@@ -9,46 +11,48 @@
 </div>
 
 <div class="profile-container">
+
   <div class="task-container">
+
+    <h1>Your Tasks</h1>
+
+  </div>
+
+  <div class="planner-container">
+
+    <h1>Day Planner</h1>
+
+    
 
   </div>
 
   <div class="event-container">
 
-  </div>
+    <h1>Your Events</h1>
 
-  <div class="day-planner">
-
-  </div>
-
-
-</div>
-
-<div class="events_container">
-  <h1>Your Events</h1>
-  <div class="events">
-    {% for event in events %}
-      {% if event.event_user_id == user_id %}
-      <h1> {{ event.event_name }} </h1>
-      <form action="{{ url_for('main.delete_event', event_id=event.event_id) }}" method="POST" class="delete_event">
-        <button type="submit"> delete </button>
-      </form>
-      {% endif %}
-    {% endfor %}
-  </div>
-</div>
-
-<div class="day_planner">
-  <h1>Day Planner</h1>
-</div>
-
-<form method="POST" action="/add_event">
-    <div class="field">
-        <div class="control">
-            <input class="input is-large" type="name" name="event_name" placeholder="Event Name" autofocus="">
-        </div>
+    <div class="events">
+      {% for event in events %}
+        {% if event.event_user_id == user_id %}
+        <div draggable="true" class = "event"> {{ event.event_name }} </div>
+        <form action="{{ url_for('main.delete_event', event_id=event.event_id) }}" method="POST" class="delete_event">
+          <button type="submit"> delete </button>
+        </form>
+        {% endif %}
+      {% endfor %}
     </div>
-    <button class="button is-block is-info is-large is-fullwidth">Add Event</button>
-</form>
+
+    <form method="POST" action="/add_event">
+        <div class="field">
+            <div class="control">
+                <input class="input is-large" type="name" name="event_name" placeholder="Event Name" autofocus="">
+            </div>
+        </div>
+        <button class="button is-block is-info is-large is-fullwidth">Add Event</button>
+    </form>
+
+  </div>
+
+</div>
+
 
 {% endblock %}

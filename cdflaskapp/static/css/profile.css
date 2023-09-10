@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.welcome-container {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  background-color: #eee;
+}
+
+.profile-container {
+  width: 100%;
+  height: 1000px;
+}
+
+.task-container {
+  text-align: center;
+  float: left;
+  height: 100%;
+  width: 25%;
+  background-color: #ccc;
+}
+
+.planner-container{
+  float: left;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  background-color: #aaa;
+}
+
+.event-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  height: 100%;
+  width: 25%;
+  background-color: #bbb;
+}
+
+.event {
+  border: 3px solid #666;
+  background-color: #abc;
+  padding: 10px;
+  cursor: move;
+}
+
+.event .over {
+  border: 3px dotted #666;
+}

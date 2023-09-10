@@ -5,67 +5,43 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask Auth Example</title>
+    <title>Halberd</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}" />
+
+
 </head>
 
 <body>
 
+  <div class="navigation-bar">
+    <div class="column logo">
 
+    </div>
+    <div class="column title">
+      <p class="main-title">Herbert Station</p>
+    </div>
+    <div class="column menu">
+      <a href="{{ url_for('main.index') }}" class="navbar-item">Home</a>
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('main.profile') }}" class="navbar-item">Profile</a>
+      {% endif %}
+      {% if not current_user.is_authenticated %}
+      <a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a>
+      <a href="{{ url_for('auth.signup') }}" class="navbar-item">Sign Up</a>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+      <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
+      {% endif %}
+    </div>
+  </div>
 
-    <section class="hero is-primary is-fullheight">
-      <div class="container">
-        <input type="checkbox" id="toggle" checked />
-        <label class="button" for="toggle">
-          <nav class="nav">
-            <ul>
-              <li><a href="#0"><i class="ri-mic-line"></i></a></li>
-              <li><a href="#0"><i class="ri-message-2-line"></i></a></li>
-              <li><a href="#0"><i class="ri-file-line"></i></a></li>
-              <li><a href="#0"><i class="ri-send-plane-2-line"></i></a></li>
-            </ul>
-          </nav>
-        </label>
-      </div>
-        <!-- <div class="hero-head">
-            <nav class="navbar">
-                <div class="container">
-                    <div id="navbarMenuHeroA" class="navbar-menu">
-                        <div class="navbar-end">
-                            <a href="{{ url_for('main.index') }}" class="navbar-item">
-                                Home
-                            </a>
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('main.profile') }}" class="navbar-item">
-                                Profile
-                            </a>
-                            {% endif %}
-                            {% if not current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                                Login
-                            </a>
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
-                                Sign Up
-                            </a>
-                            {% endif %}
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                                Logout
-                            </a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </div> -->
+  <div class="">
+    {% block content %}
+    {% endblock %}
+  </div>
 
-        <div class="hero-body">
-            <div class="container has-text-centered">
-               {% block content %}
-               {% endblock %}
-            </div>
-        </div>
-    </section>
 </body>
 
 </html>

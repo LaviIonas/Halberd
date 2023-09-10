@@ -14,7 +14,8 @@ def index():
 def profile():
     events = Event.query.all()
     return render_template('profile.html',
-                            name=current_user.name,
+                            user_id=current_user.id,
+                            user_name=current_user.name,
                             events=events)
 
 @main.route('/add_event', methods=['POST'])
@@ -36,7 +37,7 @@ def add_event():
 @main.route('/delete_event/<event_id>', methods=['POST'])
 @login_required
 def delete_event(event_id):
-    event = Event.query.get(event_id=event_id)
+    event = Event.query.get(event_id)
 
     db.session.delete(event)
     db.session.commit()

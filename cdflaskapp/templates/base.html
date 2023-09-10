@@ -6,13 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask Auth Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
 </head>
 
 <body>
-    <section class="hero is-primary is-fullheight">
 
-        <div class="hero-head">
+
+
+    <section class="hero is-primary is-fullheight">
+      <div class="container">
+        <input type="checkbox" id="toggle" checked />
+        <label class="button" for="toggle">
+          <nav class="nav">
+            <ul>
+              <li><a href="#0"><i class="ri-mic-line"></i></a></li>
+              <li><a href="#0"><i class="ri-message-2-line"></i></a></li>
+              <li><a href="#0"><i class="ri-file-line"></i></a></li>
+              <li><a href="#0"><i class="ri-send-plane-2-line"></i></a></li>
+            </ul>
+          </nav>
+        </label>
+      </div>
+        <!-- <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
                     <div id="navbarMenuHeroA" class="navbar-menu">
@@ -42,7 +57,7 @@
                     </div>
                 </div>
             </nav>
-        </div>
+        </div> -->
 
         <div class="hero-body">
             <div class="container has-text-centered">
